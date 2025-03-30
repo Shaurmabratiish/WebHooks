@@ -82,7 +82,7 @@ public class ChatEventHandler {
 
     private static void toggleBotState() {
         Webhook.world = !Webhook.world;
-        String response = Webhook.world ? "Пизда рулю пошла жара" : "Хватит с тебя на сегодня";
+        String response = Webhook.world ? "\n Start \n" : "\n End \n";
         notifyPlayer(response);
     }
 
