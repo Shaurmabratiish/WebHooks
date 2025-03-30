@@ -19,7 +19,7 @@ public class ChatEventHandler {
     private static final Queue<String> messageQueue = new ConcurrentLinkedQueue<>();
     private static final int MESSAGES_PER_TICK = 1; // Максимальное количество сообщений за тик
     private static boolean isProcessing = false;
-
+    private static int TICK_TO_MESSAGE = 0;
     @SubscribeEvent
     public static void onChatReceived(ClientChatReceivedEvent event) {
         if (!Webhook.world) return;
@@ -38,14 +38,19 @@ public class ChatEventHandler {
         isProcessing = true;
         MillenniumScheduler.run(() -> {
             try {
-                int processed = 0;
-                while (!messageQueue.isEmpty() && processed < MESSAGES_PER_TICK) {
-                    String message = messageQueue.poll();
-                    if (message != null) {
-                        Webhook.HOOK.setContent("`" + message + "`");
-                        Webhook.HOOK.execute();
-                        processed++;
+                if(TICK_TO_MESSAGE >= 4) {
+                    TICK_TO_MESSAGE = 0;
+                    int processed = 0;
+                    while (!messageQueue.isEmpty() && processed < MESSAGES_PER_TICK) {
+                        String message = messageQueue.poll();
+                        if (message != null) {
+                            Webhook.HOOK.setContent("`" + message + "`");
+                            Webhook.HOOK.execute();
+                            processed++;
+                        }
                     }
+                }else {
+                    TICK_TO_MESSAGE += 1;
                 }
             } catch (IOException e) {
                 notifyPlayer("Ошибка отправки в Discord: " + e.getMessage());
