@@ -26,10 +26,8 @@ import java.util.stream.Collectors;
 @Mod("webhook")
 @Mod.EventBusSubscriber(modid = "webhook", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class Webhook {
-
-    public static final String WEBHOOK = "";
     public static Boolean world = false;
-    public static DiscordWebhook HOOK = new DiscordWebhook(Webhook.WEBHOOK);
+    public static DiscordWebhook HOOK = new DiscordWebhook("");
     public Webhook() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 

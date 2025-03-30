@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Mod.EventBusSubscriber(modid = "webhook", value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ChatEventHandler {
     private static final Queue<String> messageQueue = new ConcurrentLinkedQueue<>();
-    private static final int MESSAGES_PER_TICK = 3; // Максимальное количество сообщений за тик
+    private static final int MESSAGES_PER_TICK = 1; // Максимальное количество сообщений за тик
     private static boolean isProcessing = false;
 
     @SubscribeEvent
