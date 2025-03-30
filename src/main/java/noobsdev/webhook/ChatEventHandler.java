@@ -75,9 +75,7 @@ public class ChatEventHandler {
     private static boolean shouldProcessMessage(String message) {
         return message.contains("»") &&
                 !message.startsWith("Вопросы") &&
-                !message.startsWith("Друзья") &&
-                !message.startsWith("Донат-чат") &&
-                !message.startsWith("Креатив-чат");
+                !message.startsWith("Друзья");
     }
 
     private static void toggleBotState() {
