@@ -27,14 +27,13 @@ import java.util.stream.Collectors;
 @Mod.EventBusSubscriber(modid = "webhook", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class Webhook {
 
-    public static final String WEBHOOK = "https://discord.com/api/webhooks/1355865460196900985/0wMBZsrWuiWJ93tawVW7yDu3hkBtIv_9hpMxJzRzYJ30bflgREvvM2aVEcKYDK5IMKDP";
+    public static final String WEBHOOK = "";
     public static Boolean world = false;
+    public static DiscordWebhook HOOK = new DiscordWebhook(Webhook.WEBHOOK);
     public Webhook() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         eventBus.addListener(this::commonSetup);
-        MinecraftForge.EVENT_BUS.addListener(chat::onReceiveMessage);
-        MinecraftForge.EVENT_BUS.addListener(chat::onClientChat);
 
     }
     private void commonSetup(final FMLCommonSetupEvent event) {
