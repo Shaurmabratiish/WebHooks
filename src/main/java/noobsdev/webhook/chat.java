@@ -13,7 +13,10 @@ public class chat {
         if(message.contains("»") && !message.startsWith("Вопросы") && !message.startsWith("Друзья") && !message.startsWith("Донат-чат") && !message.startsWith("Креатив-чат")) {
             if (Webhook.world) {
                 if(message.contains("@")) {
-                    message.replace("@", "#");
+                    message = message.replace("@", "");
+                }
+                if (message.contains("`")) {
+                    message = message.replace("`", "");
                 }
                 DiscordWebhook webhook = new DiscordWebhook(Webhook.WEBHOOK);
 
